@@ -9,11 +9,14 @@ import {
     MdQueryStats,
 } from "react-icons/md";
 import { GrInProgress } from "react-icons/gr";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { logout } from "../store/userSlice"; 
 const Sidebar = () => {
     const [activeTab, setActiveTab] = useState("Dashboard");
+    const dispatch = useDispatch();
+    const navigate = useNavigate(); 
 
     const tabOptions = [
         { name: "Dashboard", link: "/", icon: <MdDashboard /> },
@@ -23,11 +26,16 @@ const Sidebar = () => {
         { name: "Deployed Tasks", link: "/deployedTask", icon: <MdCloudDone /> },
         { name: "Deferred Tasks", link: "/deferredTask", icon: <MdOutlineAccessTimeFilled /> },
         { name: "Add New Tasks", link: "/addTask", icon: <MdAddTask /> },
-        // { name: "Task Stats", link: "/statsTask", icon: <MdQueryStats /> },
+        { name: "Logout", link: "/login", icon: <MdQueryStats /> }, 
     ];
 
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate("/login"); 
+    };
+
     return (
-        <div className="bg-indigo-500 min-h-[100vh] sm:min-h-screen w-[5rem] sm:w-[19rem] flex flex-col gap-4 roboto-regular">
+        <div className="bg-indigo-500 min-h-[100vh] sm:min-h-screen w-[6rem] sm:w-[21rem] flex flex-col gap-4 roboto-regular">
             <div className="flex items-center gap-2 justify-center h-16 text-white text-2xl font-bold mt-6">
                 <GrTask />
                 <span className="sm:block hidden">Task Manager</span>
@@ -38,10 +46,15 @@ const Sidebar = () => {
                         <Link
                             key={index}
                             to={tab.link}
-                            onClick={() => setActiveTab(tab.name)}
+                            onClick={() => {
+                                setActiveTab(tab.name);
+                                if (tab.name === "Logout") {
+                                    handleLogout();
+                                }
+                            }}
                             className={`px-12 py-4 font-semibold text-lg cursor-pointer flex justify-start items-center gap-2 ${activeTab === tab.name
-                                    ? "text-white bg-indigo-700 rounded-md"
-                                    : "text-gray-300 hover:text-gray-700"
+                                ? "text-white bg-indigo-700 rounded-md"
+                                : "text-gray-300 hover:text-gray-700"
                                 }`}
                         >
                             <span className="text-2xl">{tab.icon}</span>
