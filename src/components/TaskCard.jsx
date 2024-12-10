@@ -1,7 +1,7 @@
 
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { toggleTaskCompleted } from '../store/taskSlice'
+import { toggleTaskCompleted, removeTask } from '../store/taskSlice'
 import { useState } from "react";
 
 const TaskCard = ({
@@ -45,6 +45,10 @@ const TaskCard = ({
         setComplete(true)
     };
 
+    const handleRemove = ()=>{
+        dispatch(removeTask(id));
+    }
+
     return (
         <div
             className={` flex flex-col rounded-xl justify-center gap-4 bg-white w-72 max-h-[370px] shadow-xl border`}
@@ -71,8 +75,8 @@ const TaskCard = ({
                     </div>
                 </div>
             </div>
+            <p className="font-light text-xs block text-black text-center">{`Mohd Mudassir`}</p> 
             <div className="footer p-3 flex items-center justify-between">
-                <p className="font-light text-xs block text-black">{`Puskar Roy`}</p>
                 <button
                     onClick={handleToggleCompleted}
                     type="button"
@@ -81,6 +85,14 @@ const TaskCard = ({
                         : `${getStatusColor(status)}`
                         }`}
                 > {complete ? 'Completed' : `${status}`}</button>
+                <button
+                    onClick={handleRemove}
+                    type="button"
+                    className={`flex items-center justify-center gap-2 text-black  select-none focus:outline-none shadow-md  uppercase font-bold text-xs py-2 px-6 rounded-lg ${complete
+                        ? 'bg-green-200 text-green-800'
+                        : `${getStatusColor(status)}`
+                        }`}
+                > Remove</button>
             </div>
         </div>
     );
