@@ -21,7 +21,7 @@ const App = () => {
     <div className='flex h-full'>
       <Sidebar />
       <Routes>
-        <Route path="/" element={<AllTasks />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/addTask" element={<AddTask />} />
         <Route path="/allTask" element={<AllTasks />} />
         <Route path="/completeTask" element={<CompleteTask />} />
@@ -29,7 +29,7 @@ const App = () => {
         <Route path="/deployedTask" element={<Deployed />} />
         <Route path="/deferredTask" element={<Deferred />} />
         <Route path="/inProgressTask" element={<InProgressTask />} />
-        <Route path="/statsTask" element={<Dashboard />} />
+        {/* <Route path="/statsTask" element={<Dashboard />} /> */}
       </Routes>
     </div>
 
