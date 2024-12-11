@@ -13,7 +13,7 @@ const AddTask = () => {
         endDate: null,
         status: 'Pending',
         assignee: '',
-        priority: 'P0'
+        priority: 'High'
     });
 
     const handleChange = (e) => {
@@ -154,9 +154,9 @@ const AddTask = () => {
                                     value={formData.priority}
                                     onChange={handleChange}
                                 >
-                                    <option value="P0">P0</option>
-                                    <option value="P1">P1</option>
-                                    <option value="P2">P2</option>
+                                    <option value="High">High</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Low">Low</option>
                                 </select>
                             </div>
                         </div>

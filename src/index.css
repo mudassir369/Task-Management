@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Add this CSS for smooth transition and animation */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button {
+  transition: transform 0.5s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* Animation for moving sun and moon emojis */
+@keyframes slide-to-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes slide-to-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(10px);
+  }
+}
+
+.animate-slide-to-left {
+  animation: slide-to-left 0.5s forwards;
+}
+
+.animate-slide-to-right {
+  animation: slide-to-right 0.5s forwards;
+}

@@ -1,5 +1,6 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import './index.css';
 import AddTask from './components/AddTask';
 import Sidebar from './components/Sidebar';
@@ -27,19 +28,25 @@ const App = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
 
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   const handleLogin = (data) => {
     dispatch(login(data));
   };
 
   const handleSignup = (data) => {
-    dispatch(login(data)); 
+    dispatch(login(data));
+  };
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
   };
 
   return (
-    <div className="h-full">
+    <div className={`h-full ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'} transition-all duration-300`}>
       {isAuthenticated ? (
         <div className="flex">
-          <Sidebar />
+          <Sidebar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
           <div className="w-full">
             <Routes>
               <Route
