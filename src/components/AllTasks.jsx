@@ -5,7 +5,7 @@ import { selectAllTasks } from "../store/taskSlice";
 import { Link } from "react-router-dom";
 import { IoFilterSharp, IoClose } from "react-icons/io5";
 
-const AllTasks = () => {
+const AllTasks = ({isDarkMode}) => {
     const tasks = useSelector(selectAllTasks);
     const [startDate, setStartDate] = useState(null);
     const [toggle, settoggle] = useState(false);
@@ -99,6 +99,7 @@ const AllTasks = () => {
                             status={task.status}
                             assignee={task.assignee}
                             priority={task.priority}
+                            isDarkMode={isDarkMode}
                         />
                     ))}
                 </div>

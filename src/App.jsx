@@ -53,7 +53,7 @@ const App = () => {
                 path="/"
                 element={
                   <PrivateRoute>
-                    <Dashboard />
+                    <Dashboard isDarkMode={isDarkMode} />
                   </PrivateRoute>
                 }
               />
@@ -69,7 +69,7 @@ const App = () => {
                 path="/allTask"
                 element={
                   <PrivateRoute>
-                    <AllTasks />
+                    <AllTasks isDarkMode={isDarkMode} />
                   </PrivateRoute>
                 }
               />
@@ -77,7 +77,7 @@ const App = () => {
                 path="/completeTask"
                 element={
                   <PrivateRoute>
-                    <CompleteTask />
+                    <CompleteTask isDarkMode={isDarkMode} />
                   </PrivateRoute>
                 }
               />
@@ -85,7 +85,7 @@ const App = () => {
                 path="/pendingTask"
                 element={
                   <PrivateRoute>
-                    <PendingTask />
+                    <PendingTask isDarkMode={isDarkMode} />
                   </PrivateRoute>
                 }
               />
@@ -93,7 +93,7 @@ const App = () => {
                 path="/deployedTask"
                 element={
                   <PrivateRoute>
-                    <Deployed />
+                    <Deployed isDarkMode={isDarkMode} />
                   </PrivateRoute>
                 }
               />
@@ -101,7 +101,7 @@ const App = () => {
                 path="/deferredTask"
                 element={
                   <PrivateRoute>
-                    <Deferred />
+                    <Deferred isDarkMode={isDarkMode} />
                   </PrivateRoute>
                 }
               />
@@ -109,7 +109,7 @@ const App = () => {
                 path="/inProgressTask"
                 element={
                   <PrivateRoute>
-                    <InProgressTask />
+                    <InProgressTask isDarkMode={isDarkMode} />
                   </PrivateRoute>
                 }
               />

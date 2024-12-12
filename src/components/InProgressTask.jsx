@@ -2,7 +2,7 @@ import TaskCard from "./TaskCard";
 import { useSelector } from 'react-redux';
 import { selectAllTasks } from '../store/taskSlice';
 import { Link } from "react-router-dom";
-const InProgressTask = () => {
+const InProgressTask = ({ isDarkMode }) => {
     const tasks = useSelector(selectAllTasks);
     const completedTasks = tasks.filter(task => task.status === 'In Progress');
 
@@ -24,6 +24,7 @@ const InProgressTask = () => {
                                 status={task.status}
                                 assignee={task.assignee}
                                 priority={task.priority}
+                                isDarkMode={isDarkMode}
                             />
                         ))}
                     </div>

@@ -4,7 +4,7 @@ import { selectAllTasks } from '../store/taskSlice';
 import { Link } from "react-router-dom";
 
 
-const Deferred = () => {
+const Deferred = ({ isDarkMode }) => {
     const tasks = useSelector(selectAllTasks);
     const completedTasks = tasks.filter(task => task.status === 'Deferred');
   return (
@@ -25,6 +25,7 @@ const Deferred = () => {
                               status={task.status}
                               assignee={task.assignee}
                               priority={task.priority}
+                              isDarkMode={isDarkMode}
                           />
                       ))}
                   </div>

@@ -4,7 +4,7 @@ import { selectAllTasks } from '../store/taskSlice';
 import { Link } from "react-router-dom";
 
 
-const PendingTask = () => {
+const PendingTask = ({ isDarkMode }) => {
 
     const tasks = useSelector(selectAllTasks);
     const completedTasks = tasks.filter(task => task.status === 'Pending');
@@ -26,6 +26,7 @@ const PendingTask = () => {
                                 status={task.status}
                                 assignee={task.assignee}
                                 priority={task.priority}
+                                isDarkMode={isDarkMode}
                             />
                         ))}
                     </div>
